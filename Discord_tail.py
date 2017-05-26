@@ -107,7 +107,7 @@ def DontStarveReactionFilter(line):
     else:
         return None
 
-async def my_background_task(channelID, filename, time):
+async def file_tail(channelID, filename, time):
     await client.wait_until_ready()
     channel = discord.Object(id=channelID)
     
@@ -143,6 +143,7 @@ async def my_background_task(channelID, filename, time):
                     reaction = DontStarveReactionFilter(line)
                     if reaction is None:
                         continue
+                    await asyncio.sleep(1.0)
                     
                     try:
                         await client.add_reaction(message, reaction)
@@ -187,7 +188,7 @@ parser.add_argument('--wait',
 
 args = parser.parse_args()
 
-client.loop.create_task(my_background_task(args.channel, args.file, args.wait))
+client.loop.create_task(file_tail(args.channel, args.file, args.wait))
 try:
     client.run(args.token)
 except discord.LoginFailure:
