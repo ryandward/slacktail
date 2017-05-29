@@ -69,47 +69,47 @@ def DontStarveReactionFilter(line):
     
     # Deerclops
     if "deerclop" in line:
-        return ":deerclops:317613422252523521"
+        return "deerclops:317613422252523521"
     
     # Moose Goose
     elif "moose" in line or "goose" in line:
-        return ":moose:317613438945853440"
+        return "moose:317613438945853440"
     
     # Mosling
     elif "mosling" in line:
-        return ":mosling:317613438618697728"
+        return "mosling:317613438618697728"
     
     # Bearger
     elif "bear" in line:
-        return ":bearger:317613422084620300"
+        return "bearger:317613422084620300"
     
     # Dragonfly
     elif "dragonfly" in line or "dfly" in line:
-        return ":dragonfly:317613422403387392"
+        return "dragonfly:317613422403387392"
     
     # Spider Queen
     elif "spider queen" in line:
-        return ":spider_queen:317613590406234114"
+        return "spider_queen:317613590406234114"
     
     # Ancient Guardian
     elif "guardian" in line:
-        return ":guardian:317613550052966400"
+        return "guardian:317613550052966400"
     
     # Klaus
     elif "klaus" in line:
-        return ":klaus:317613506755166210"
+        return "klaus:317613506755166210"
     
     # Bee Queen
     elif "bee queen" in line:
-        return ":bee_queen:317613507128328193"
+        return "bee_queen:317613507128328193"
     
     # Toadstool
     elif "toad" in line:
-        return ":toadstool:317613507552083968"
+        return "toadstool:317613507552083968"
     
     # Ancient Fuelweaver
     elif "fuelweaver" in line:
-        return ":fuelweaver:317619375366733824"
+        return "fuelweaver:317619375366733824"
     
     # No match found
     else:
