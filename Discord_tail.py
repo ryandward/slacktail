@@ -50,11 +50,11 @@ def DontStarvePrependEmoji(line):
     
     # Vote
     elif re.match(r'\[(\d+):(\d+):(\d+)\]: \[Vote Announcement\] (.+)$', line):
-        return "" + line
+        return ":white_check_mark: :white_check_mark: " + line
     
     # Kick
     elif re.match(r'\[(\d+):(\d+):(\d+)\]: \[Kick Announcement\] (.+)$', line):
-        return "" + line
+        return ":no_pedestrians: :no_pedestrians: " + line
     
     # Announcement
     elif re.match(r'\[(\d+):(\d+):(\d+)\]: \[Announcement\] (.+)$', line):
@@ -129,6 +129,8 @@ async def file_tail(channelID, filename, time):
     print("Tailing {} every {} seconds.".format(filename, time))
     
     while not client.is_closed:
+        skipped = 0.0
+        
         try:
             lines = file.readlines()
         except UnicodeDecodeError:
@@ -153,7 +155,9 @@ async def file_tail(channelID, filename, time):
                     reaction = DontStarveReactionFilter(line)
                     if reaction is None:
                         continue
-                    await asyncio.sleep(1.0)
+                    skiptime = 1.0
+                    await asyncio.sleep(skiptime)
+                    skipped += skiptime
                     
                     try:
                         await client.add_reaction(message, reaction)
@@ -169,7 +173,7 @@ async def file_tail(channelID, filename, time):
                         print("INVALID ARGUMENT EXCEPTION: Message or emoji parameter invalid, couldn't add reaction.")
         
         file.seek(0, os.SEEK_END)    # Reset EOF flag by seeking to current position
-        await asyncio.sleep(time)
+        await asyncio.sleep(max(time - skipped, 5.0))
 
 @client.event
 async def on_ready():
