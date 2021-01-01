@@ -140,7 +140,7 @@ async def file_tail(channelID, filename, time):
                 message_line = DontStarvePrependEmoji(line)
                 
                 try:
-                    message = await client.send_message(channel, message_line)
+                    message = await channel.send(message_line)
                 except discord.Forbidden:
                     print("FORBIDDEN EXCEPTION (403): Bot doesn't have permissions to send message.")
                 except discord.NotFound:
@@ -160,7 +160,7 @@ async def file_tail(channelID, filename, time):
                     skipped += skiptime
                     
                     try:
-                        await client.add_reaction(message, reaction)
+                        await message.add_reaction(reaction)
                     except discord.Forbidden:
                         print("FORBIDDEN EXCEPTION (403): Bot doesn't have permissions to add reaction.")
                     except discord.NotFound:
