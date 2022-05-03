@@ -130,7 +130,7 @@ async def file_tail(channelID, filename, wait):
     print("------")
     print("Tailing {} every {} seconds.".format(filename, wait))
 
-    while True:
+    while not client.is_closed():
         skipped = 0.0
 
         try:
