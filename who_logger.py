@@ -150,7 +150,7 @@ parser = argparse.ArgumentParser(description="Tail a file and output as a Discor
 parser.add_argument('--token',
                     '-t',
                     help="The bot token that will connect to Discord.",
-                    default="ODU4MDk4NjczMzc1MTE3MzUy.YNZMqg.E-c1l-fN6UBj8WCkSJUYr-nUFWY")
+                    required=True)
 parser.add_argument('--channel',
                     '-c',
                     type=int,
